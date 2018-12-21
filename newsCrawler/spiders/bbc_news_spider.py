@@ -1,13 +1,13 @@
 from scrapy.spiders import CrawlSpider, Rule
 from newsCrawler.items import ArticleItem
 from scrapy.linkextractors import LinkExtractor
-from .utility import Utility
+from ..utility import Utility
 from urllib.parse import urlparse
 import re
 class NewsSpider(CrawlSpider):
 
     TYPE_XPATH = "//meta[@property='og:type']/@content"
-    
+
     ARTICLE_TYPE = "article"
 
     AUTHOR_XPATH = "//meta[@property='article:author']/@content"

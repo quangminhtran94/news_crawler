@@ -2,7 +2,7 @@ import pymongo
 import ssl
 from scrapy.conf import settings
 import logging
-from .spiders.utility import Utility
+from .utility import Utility
 
 class NewscrawlerMongoDbPipeline(object):
 
