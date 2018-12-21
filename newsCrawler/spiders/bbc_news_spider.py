@@ -7,6 +7,7 @@ import re
 class NewsSpider(CrawlSpider):
 
     TYPE_XPATH = "//meta[@property='og:type']/@content"
+    
     ARTICLE_TYPE = "article"
 
     AUTHOR_XPATH = "//meta[@property='article:author']/@content"

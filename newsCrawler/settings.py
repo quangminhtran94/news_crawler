@@ -12,7 +12,6 @@
 BOT_NAME = 'news_spider'
 
 SPIDER_MODULES = ['newsCrawler.spiders']
-NEWSPIDER_MODULE = 'newsCrawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
@@ -64,9 +63,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'newsCrawler.pipelines.NewscrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'newsCrawler.pipelines.NewscrawlerMongoDbPipeline': 50,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -88,4 +87,11 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-DEPTH_LIMIT = 3
+DEPTH_LIMIT = 1
+
+MONGODB_HOST = 'localhost:27017'
+MONGODB_PORT = 27017
+MONGODB_USERNAME = 'isentia'
+MONGODB_PASSWORD = 'isentia'
+MONGODB_DBNAME = 'localCrawler'
+MONGODB_NEWS_COLLECTION = 'news'
