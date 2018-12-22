@@ -24,7 +24,7 @@ Note to improve:
   - Run with Python 3
   - Install requirements
     ```
-    pip install -r REQUIREMENTS.txt
+    pip install -r requirements.txt
     ```
 
 # Usage
