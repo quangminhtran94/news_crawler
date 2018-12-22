@@ -87,7 +87,7 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
-DEPTH_LIMIT = 1
+DEPTH_LIMIT = 3
 
 MONGODB_HOST = 'mongodb://isentia:isentia@aws-ap-southeast-1-portal.0.dblayer.com:16830,aws-ap-southeast-1-portal.1.dblayer.com:16830/compose?authSource=crawlerApp'
 MONGODB_PORT = 16830

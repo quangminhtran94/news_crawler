@@ -26,7 +26,7 @@ class NewscrawlerMongoDbPipeline(object):
         Utility.closeDbConnection(self.dbClient)
 
     def process_item(self, item, spider):
-        if item['url'] is not None:
+        if item['url'] is not None and item['body']:
             try:
                 self.collection.update_one({'url': item['url']}, {'$set': dict(item)}, upsert=True)
             except pymongo.errors.OperationFailure as e:
