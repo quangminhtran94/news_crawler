@@ -11,23 +11,26 @@ class SearchService(abc.ABC):
     def search(self, keyword, prePageState, fetchSize):
         pass
 
+    #better use IOC framework to manage this. for limited time I directly put it in method args
     @staticmethod
-    def getInstance():
+    def getInstance(newsCollection = None):
         if(SearchService._instance is not None):
             return SearchService._instance
         SearchService._instance = SearchServiceImpl()
+        if newsCollection is None:
+            dbClient = Utility.getDbConnection()
+            db = dbClient[settings['MONGODB_DBNAME']]
+            SearchService._instance.collection = db[settings['MONGODB_NEWS_COLLECTION']]
+        else:
+            SearchService._instance.collection = newsCollection
         return SearchService._instance
 
 class SearchServiceImpl(SearchService):
     def search(self, keyword, prePageState, fetchSize):
-
-        dbClient = Utility.getDbConnection()
-        db = dbClient[settings['MONGODB_DBNAME']]
-        collection = db[settings['MONGODB_NEWS_COLLECTION']]
         results = []
         if keyword is not None:
             try:
-                for item in collection.find({"$text": {"$search": keyword}}):
+                for item in self.collection.find({"$text": {"$search": keyword}}):
                     results.append({
                         'url': item['url'],
                         'title': item['title'],

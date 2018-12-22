@@ -17,10 +17,13 @@ class NewscrawlerMongoDbPipeline(object):
         )
 
     def open_spider(self, spider):
-        self.collection = Utility.getNewsCollection()
+        
+        self.dbClient = Utility.getDbConnection()
+        db = self.dbClient[settings['MONGODB_DBNAME']]
+        self.collection = db[settings['MONGODB_NEWS_COLLECTION']]
 
     def close_spider(self, spider):
-        Utility.closeDbConnection()
+        Utility.closeDbConnection(self.dbClient)
 
     def process_item(self, item, spider):
         if item['url'] is not None:
