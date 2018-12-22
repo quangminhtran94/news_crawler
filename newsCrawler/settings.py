@@ -89,12 +89,12 @@ ITEM_PIPELINES = {
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 DEPTH_LIMIT = 1
 
-MONGODB_HOST = 'localhost:27017'
-MONGODB_PORT = 27017
+MONGODB_HOST = 'mongodb://isentia:isentia@aws-ap-southeast-1-portal.0.dblayer.com:16830,aws-ap-southeast-1-portal.1.dblayer.com:16830/compose?authSource=crawlerApp'
+MONGODB_PORT = 16830
 MONGODB_USERNAME = 'isentia'
 MONGODB_PASSWORD = 'isentia'
-MONGODB_DBNAME = 'localCrawler'
+MONGODB_DBNAME = 'crawlerApp'
 MONGODB_NEWS_COLLECTION = 'news'
 
-LOCAL_MODE = True
+LOCAL_MODE = False
 MONGODB_LOCAL_HOST = 'localhost:27017'

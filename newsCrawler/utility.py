@@ -1,5 +1,6 @@
 from scrapy.conf import settings
 import pymongo
+import ssl
 
 class Utility(object):
     HTTP_PREFIX = 'http://'
