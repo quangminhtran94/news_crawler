@@ -6,8 +6,6 @@ class Utility(object):
 
     HTTPS_PREFIX = 'https://'
 
-    client = pymongo.MongoClient(settings['MONGODB_HOST'])
-
     @staticmethod
     def convertToValidUrl(url):
         if not url.startswith(Utility.HTTP_PREFIX) and not url.startswith(Utility.HTTPS_PREFIX):
@@ -15,10 +13,11 @@ class Utility(object):
         return url
 
     @staticmethod
-    def getNewsCollection():
-        db = Utility.client[settings['MONGODB_DBNAME']]
-        return db[settings['MONGODB_NEWS_COLLECTION']]
+    def getDbConnection():
+        if settings['LOCAL_MODE']:
+            return pymongo.MongoClient(settings['MONGODB_LOCAL_HOST'])
+        return pymongo.MongoClient(settings['MONGODB_HOST'])
 
     @staticmethod
-    def closeDbConnection():
-        Utility.client.close()
+    def closeDbConnection(client):
+        client.close()

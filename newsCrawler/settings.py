@@ -95,3 +95,6 @@ MONGODB_USERNAME = 'isentia'
 MONGODB_PASSWORD = 'isentia'
 MONGODB_DBNAME = 'localCrawler'
 MONGODB_NEWS_COLLECTION = 'news'
+
+LOCAL_MODE = True
+MONGODB_LOCAL_HOST = 'localhost:27017'
